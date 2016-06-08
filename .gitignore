@@ -3,3 +3,4 @@
 tests/Stripe.RData
 **.RData
 tests/clean.r
+.Rproj.user
