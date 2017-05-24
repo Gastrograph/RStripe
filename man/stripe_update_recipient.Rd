@@ -4,14 +4,12 @@
 \alias{stripe_update_recipient}
 \title{Update a recipient on Stripe.}
 \usage{
-stripe_update_recipient(api_key, recipient_id, args)
+stripe_update_recipient(recipient_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{recipient_id}{The id for the recipient you want to update.}
 
-\item{args}{A list that can contain 
+\item{args}{A list that can contain
 \describe{
    \item{name}{\emph{optional} The legal name of recipient.}
    \item{tax_id}{\emph{optional} The tax ID either 'SSN' for individual or 'EIN' for corporation}
@@ -20,8 +18,10 @@ stripe_update_recipient(api_key, recipient_id, args)
    \item{email}{\emph{optional} Recipients email address.}
    \item{description}{\emph{optional} Arbitrary string to describe.}
    \item{metadata}{\emph{optional} key/value for storing information.}
-   \item{default_card}{\emph{optional} The default card to sue.} 
+   \item{default_card}{\emph{optional} The default card to sue.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with recipient information
@@ -29,4 +29,3 @@ A data frame with recipient information
 \description{
 Update or add information about a recipient on stripe.
 }
-

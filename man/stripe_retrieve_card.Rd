@@ -4,15 +4,15 @@
 \alias{stripe_retrieve_card}
 \title{Retrieve a card from a customer}
 \usage{
-stripe_retrieve_card(api_key, card_id, customer_id)
+stripe_retrieve_card(card_id, customer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{card_id}{The id for the card you want to retrieve}
 
 \item{customer_id}{The id for the customer where the card is
 added to.}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with card information
@@ -20,4 +20,3 @@ A data frame with card information
 \description{
 Retrieve the information about a credit card.  Can retrieve last 4 digits.
 }
-

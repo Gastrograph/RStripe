@@ -4,14 +4,14 @@
 \alias{stripe_delete_subscription}
 \title{Delete a subscription on Stripe.}
 \usage{
-stripe_delete_subscription(api_key, customer_id, subscription_id)
+stripe_delete_subscription(customer_id, subscription_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id of the customer with the subscription.}
 
 \item{subscription_id}{The id for the subscription you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with nothing if successful.
@@ -19,4 +19,3 @@ A data frame with nothing if successful.
 \description{
 Delete a subscription on a particular customer.
 }
-

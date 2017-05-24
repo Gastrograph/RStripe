@@ -2,13 +2,13 @@
 # Invoices
 # --------------------------------------------------
 
-#' Create an Invoice. 
+#' Create an Invoice.
 #'
 #' Create a new invoice for a customer.
 #'
 #' @param api_key Your Stripe API Key
 #'
-#' @param args A list which must contain 
+#' @param args A list which must contain
 #' \describe{
 #'    \item{customer}{\strong{required} customer id for the invoice.}
 #'    \item{description}{\emph{optional} description of invoice.}
@@ -22,9 +22,10 @@
 #'
 #' @export
 #'
-stripe_create_invoice <- function(api_key, args) {
+stripe_create_invoice <- function(args, api_key = NULL) {
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/invoices")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -40,8 +41,9 @@ stripe_create_invoice <- function(api_key, args) {
 #'
 #' @export
 #'
-stripe_retrieve_invoice <- function(api_key, invoice_id) {
+stripe_retrieve_invoice <- function(invoice_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/invoices/", invoice_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -53,7 +55,7 @@ stripe_retrieve_invoice <- function(api_key, invoice_id) {
 #'
 #' @param invoice_id The invoice id with the items you want to retrieve
 #'
-#' @param args An optional list that can include 
+#' @param args An optional list that can include
 #' \describe{
 #'    \item{ending_before}{\emph{optional:} An object id which will show objects before}
 #'    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
@@ -64,10 +66,11 @@ stripe_retrieve_invoice <- function(api_key, invoice_id) {
 #'
 #' @export
 #'
-stripe_retrieve_invoice_line_items <- function(api_key, invoice_id, args=NULL) {
+stripe_retrieve_invoice_line_items <- function(invoice_id, args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/invoices/",
                               invoice_id, "/lines", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -93,9 +96,10 @@ stripe_retrieve_invoice_line_items <- function(api_key, invoice_id, args=NULL) {
 #'
 #' @export
 #'
-stripe_update_invoice <- function(api_key, invoice_id, args) {
+stripe_update_invoice <- function(invoice_id, args, api_key = NULL) {
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/invoices/", invoice_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -111,8 +115,9 @@ stripe_update_invoice <- function(api_key, invoice_id, args) {
 #'
 #' @export
 #'
-stripe_pay_invoice <- function(api_key, invoice_id) {
+stripe_pay_invoice <- function(invoice_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/invoices/", invoice_id, "/pay")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link)
 }
 
@@ -133,9 +138,10 @@ stripe_pay_invoice <- function(api_key, invoice_id) {
 #'
 #' @export
 #'
-stripe_list_invoices <- function(api_key, args=NULL) {
+stripe_list_invoices <- function(args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/invoices", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -151,8 +157,11 @@ stripe_list_invoices <- function(api_key, args=NULL) {
 #'
 #' @export
 #'
-stripe_upcoming_customer_invoice <- function(api_key, customer_id) {
-    args <- .convert_to_url(args)
-    link <- paste0("https://api.stripe.com/v1/invoices/upcoming?customer=", customer_id)
+stripe_upcoming_customer_invoice <- function(customer_id, api_key = NULL) {
+    # args <- .convert_to_url(args)
+    api_key = check_stripe_secret_key(api_key = api_key)
+
+    link <- paste0("https://api.stripe.com/v1/invoices/upcoming?customer=",
+                   customer_id)
     .get(api_key, link)
 }

@@ -12,9 +12,10 @@
 #'
 #' @export
 #'
-stripe_retrieve_balance <- function(api_key) {
-    link <- paste0("https://api.stripe.com/v1/balance")
-    .get(api_key, link)
+stripe_retrieve_balance <- function(api_key = NULL) {
+  link <- paste0("https://api.stripe.com/v1/balance")
+  api_key = check_stripe_secret_key(api_key = api_key)
+  .get(api_key, link)
 }
 
 #' Retrieve a Stripe Account Balance transaction.
@@ -29,10 +30,14 @@ stripe_retrieve_balance <- function(api_key) {
 #'
 #' @export
 #'
-stripe_retrieve_balance_transaction <- function(api_key, transaction_id) {
-    link <- paste0("https://api.stripe.com/v1/balance/history/", transaction_id)
+stripe_retrieve_balance_transaction <- function(
+  transaction_id, api_key = NULL) {
+    link <-
+      paste0("https://api.stripe.com/v1/balance/history/",
+             transaction_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
-}
+  }
 
 #' Retrieve a Stripe Account Balance History.
 #'
@@ -57,8 +62,10 @@ stripe_retrieve_balance_transaction <- function(api_key, transaction_id) {
 #'
 #' @export
 #'
-stripe_balance_history <- function(api_key, args=NULL) {
-    args <- .convert_to_url(args)
-    link <- paste0("https://api.stripe.com/v1/balance/history", args)
-    .get(api_key, link)
+stripe_balance_history <- function(args = NULL, api_key = NULL) {
+  args <- .convert_to_url(args)
+  link <-
+    paste0("https://api.stripe.com/v1/balance/history", args)
+  api_key = check_stripe_secret_key(api_key = api_key)
+  .get(api_key, link)
 }

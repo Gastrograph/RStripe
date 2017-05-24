@@ -4,13 +4,13 @@
 \alias{stripe_retrieve_application_fee}
 \title{Retrieve an Application Fee.}
 \usage{
-stripe_retrieve_application_fee(api_key, application_fee_id)
+stripe_retrieve_application_fee(application_fee_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{application_fee_id}{The id for the Application Fee
 you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with refund app fee information
@@ -18,4 +18,3 @@ A data frame with refund app fee information
 \description{
 Retrieve the data behind a specific applicaiton fee.
 }
-

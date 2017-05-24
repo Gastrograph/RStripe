@@ -4,17 +4,20 @@
 \alias{stripe_list_coupons}
 \title{List all coupons.}
 \usage{
-stripe_list_coupons(api_key, args = NULL)
+stripe_list_coupons(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{An optional list which can contain
 \describe{
-   \item{ending_before}{\emph{optional:} An object id which will show objects before}
-   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
-   \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
+   \item{ending_before}{\emph{optional:} An object id which will show
+   objects before}
+   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.
+   Default is 10}
+   \item{starting_after}{\emph{optional:} An object id which will show
+   objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with all the coupons.
@@ -22,9 +25,3 @@ A data frame with all the coupons.
 \description{
 List all the coupons currently in your account.
 }
-\examples{
-\dontrun{stripe_list_application_fee_refunds("sk_test_BQokikJOvBiI2HlWgH4olfQ2", "fee_4cbC9iLv8PdUnk",
-list(limit=3))} #returns 3 refunds
-
-}
-

@@ -4,11 +4,9 @@
 \alias{stripe_list_invoice_items}
 \title{List all Invoice Item.}
 \usage{
-stripe_list_invoice_items(api_key, args = NULL)
+stripe_list_invoice_items(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{A list which can contain:
 \describe{
    \item{ending_before}{\emph{optional:} An object id which will show objects before}
@@ -16,6 +14,8 @@ stripe_list_invoice_items(api_key, args = NULL)
    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
    \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the the invoice items if successful.
@@ -23,4 +23,3 @@ A data frame with the the invoice items if successful.
 \description{
 List all the invoice items in your account.  This can be limited by customer, date, etc.
 }
-

@@ -4,12 +4,12 @@
 \alias{stripe_upcoming_customer_invoice}
 \title{Retrieve upcoming customer's invoice.}
 \usage{
-stripe_upcoming_customer_invoice(api_key, customer_id)
+stripe_upcoming_customer_invoice(customer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The customer id that you want the upcoming invoice}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the upcoming invoice if successful.
@@ -17,4 +17,3 @@ A data frame with the upcoming invoice if successful.
 \description{
 Retrieve the upcoming customer invoice to send out.
 }
-

@@ -4,12 +4,12 @@
 \alias{stripe_delete_coupon}
 \title{Delete a coupon.}
 \usage{
-stripe_delete_coupon(api_key, coupon_id)
+stripe_delete_coupon(coupon_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{coupon_id}{The coupon you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A null dataframe if succeeded.
@@ -17,4 +17,3 @@ A null dataframe if succeeded.
 \description{
 Delete a specific coupon from your account.
 }
-

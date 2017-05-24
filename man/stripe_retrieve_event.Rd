@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_event}
 \title{Retrieve an event.}
 \usage{
-stripe_retrieve_event(api_key, event_id)
+stripe_retrieve_event(event_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{event_id}{The identifier of the event to be retrieved}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns an event data frame if valid.
@@ -17,4 +17,3 @@ Returns an event data frame if valid.
 \description{
 Retrieve the information about a specific event.
 }
-

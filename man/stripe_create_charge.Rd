@@ -4,11 +4,9 @@
 \alias{stripe_create_charge}
 \title{Create a charge.}
 \usage{
-stripe_create_charge(api_key, args)
+stripe_create_charge(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{A list of arguments
 \describe{
    \item{amount}{\strong{required} Amount for transfer.}
@@ -18,11 +16,15 @@ stripe_create_charge(api_key, args)
    \item{description}{\emph{optional} The description of the transfer.}
    \item{capture}{\emph{optional} True/false to capture charge later.}
    \item{recipient_email}{\emph{optional} The email to send receipt to.}
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
-   \item{statement_description}{\emph{optional} 15 character description to appear on
+   \item{metadata}{\emph{optional} A list which can contain anything to
+   further describe.}
+   \item{statement_description}{\emph{optional} 15 character description
+   to appear on
                                 statement.}
    \item{application_fee}{\emph{optional} A fee in cents applied to charge.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new charge info if successful.
@@ -31,9 +33,11 @@ A data frame with the new charge info if successful.
 Create a new charge for a customer or standalone on card.
 }
 \examples{
-\dontrun{stripe_create_charge("sk_test_BQokikJOvBiI2HlWgH4olfQ2",
-list(card="tok_14SsjM2eZvKYlo2CCtdx2AvO", amount=3000, currency="usd",
-metadata=list(order_id="12545")))}
-
+\dontrun{
+stripe_create_charge(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(source="tok_14SsjM2eZvKYlo2CCtdx2AvO", amount=3000, currency="usd",
+metadata=list(order_id="12545")))
 }
 
+}

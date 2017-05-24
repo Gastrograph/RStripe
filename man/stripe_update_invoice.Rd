@@ -4,11 +4,9 @@
 \alias{stripe_update_invoice}
 \title{Update an Invoice.}
 \usage{
-stripe_update_invoice(api_key, invoice_id, args)
+stripe_update_invoice(invoice_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{invoice_id}{The invoice id you want to update}
 
 \item{args}{Can include:
@@ -20,6 +18,8 @@ stripe_update_invoice(api_key, invoice_id, args)
    \item{statement_description}{}
    \item{metadata}{}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the updated invoice if successful.
@@ -27,4 +27,3 @@ A data frame with the updated invoice if successful.
 \description{
 Update the information on an invoice, add a fee, close, or forgive it.
 }
-

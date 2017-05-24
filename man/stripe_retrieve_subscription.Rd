@@ -4,14 +4,14 @@
 \alias{stripe_retrieve_subscription}
 \title{Retrieve a Subscription}
 \usage{
-stripe_retrieve_subscription(api_key, customer_id, subscription_id)
+stripe_retrieve_subscription(customer_id, subscription_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id of the customer with the subscription.}
 
 \item{subscription_id}{The id of the subscription you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the subscription info if successful.
@@ -19,4 +19,3 @@ A data frame with the subscription info if successful.
 \description{
 Retrieve all the information on a subscription for a customer.
 }
-

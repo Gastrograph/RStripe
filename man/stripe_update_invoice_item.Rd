@@ -4,19 +4,19 @@
 \alias{stripe_update_invoice_item}
 \title{Update an Invoice Item.}
 \usage{
-stripe_update_invoice_item(api_key, item_id, args)
+stripe_update_invoice_item(item_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{item_id}{The invoice item id you want to update}
 
-\item{args}{Can include 
+\item{args}{Can include
 \describe{
    \item{amount}{\emph{optional} Amount in cents for item.}
    \item{description}{\emph{optional} A string to attach to item for easy tracking.}
    \item{metadata}{\emph{optional} key/value pairs that you can attach to an invoice item.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the updated invoice item if successful.
@@ -24,4 +24,3 @@ A data frame with the updated invoice item if successful.
 \description{
 Update the information or amount of an invoice item.
 }
-

@@ -4,14 +4,14 @@
 \alias{stripe_retrieve_refund}
 \title{Retrieve a refund.}
 \usage{
-stripe_retrieve_refund(api_key, charge_id, refund_id)
+stripe_retrieve_refund(charge_id, refund_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The id of the charge with the refund.}
 
 \item{refund_id}{The id of the refund you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the refund info if successful.
@@ -19,4 +19,3 @@ A data frame with the refund info if successful.
 \description{
 Retrieve all the information about a particular refund on a charge.
 }
-

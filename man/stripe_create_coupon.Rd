@@ -4,23 +4,27 @@
 \alias{stripe_create_coupon}
 \title{Create a coupon.}
 \usage{
-stripe_create_coupon(api_key, args)
+stripe_create_coupon(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{An list
 \describe{
-   \item{duration}{\strong{required} Can be \emph{forever}, \emph{once}, \emph{repeating}}
+   \item{duration}{\strong{required} Can be \emph{forever}, \emph{once},
+    \emph{repeating}}
    \item{id}{\strong{optional} An id to identify. e.g. \emph{FALL25OFF}}
-   \item{amount_off}{\strong{optional} required if \emph{percent_off} is not passed.  Integer.}
+   \item{amount_off}{\strong{optional} required if \emph{percent_off} is
+   not passed.  Integer.}
    \item{currency}{\strong{optional} required if amount_off is passed.}
-   \item{duration_in_months}{\strong{optional} required if duration is repeating.}
+   \item{duration_in_months}{\strong{optional} required if duration is
+   repeating.}
    \item{max_redemptions}{\strong{optional} total amount of times to be used.}
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+   \item{metadata}{\emph{optional} A list which can contain anything to
+   further describe.}
    \item{percent_off}{\strong{optional} required if amount_off not passed.}
    \item{redeem_by}{\strong{optional} unix timestamp that it ends.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the coupon information
@@ -29,8 +33,22 @@ A data frame with the coupon information
 Create a new coupon in your account.
 }
 \examples{
-\dontrun{stripe_create_coupon("sk_test_BQokikJOvBiI2HlWgH4olfQ2", 
-list(amount_off=200, duration='forever'))}
-
+\dontrun{
+stripe_create_coupon(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(amount_off=200, duration='forever'))
 }
 
+\dontrun{
+stripe_create_coupon(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(percent_off=25, duration='once'))
+}
+
+\dontrun{
+stripe_create_coupon(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(percent_off=25, duration='repeating', duration_in_months=3))
+}
+
+}

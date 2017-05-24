@@ -4,11 +4,9 @@
 \alias{stripe_create_transfer}
 \title{Create a transfer to Stripe.}
 \usage{
-stripe_create_transfer(api_key, args)
+stripe_create_transfer(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{A list of arguments
 \describe{
    \item{amount}{\strong{required} Amount for transfer.}
@@ -23,6 +21,8 @@ stripe_create_transfer(api_key, args)
    \item{statement_description}{\emph{optional} 15 character description to appear on
                                 statement.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with transfer information
@@ -30,4 +30,3 @@ A data frame with transfer information
 \description{
 Create a new transfer that will be first marked as pending.
 }
-

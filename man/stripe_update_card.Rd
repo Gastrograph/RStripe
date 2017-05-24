@@ -4,11 +4,9 @@
 \alias{stripe_update_card}
 \title{Update a credit card on Stripe.}
 \usage{
-stripe_update_card(api_key, customer_id, card_id, args)
+stripe_update_card(customer_id, card_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id for the customer you want the credit card
 added to.}
 
@@ -26,16 +24,21 @@ added to.}
    \item{exp_year}{\emph{optional}}
    \item{name}{\emph{optional}}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with card information
 }
 \description{
-Update infomration about the billing address for a credit card as well as other fields.
+Update infomration about the billing address for a credit card as well
+as other fields.
 }
 \examples{
-\dontrun{stripe_update_card("sk_test_BQokikJOvBiI2HlWgH4olfQ2", "cus_4cb7HNjNSqqV2H",
-"card_14TLyd2eZvKYloc2C9PXnfFmi", list(exp_year="04"))}
-
+\dontrun{
+stripe_update_card(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2", "cus_4cb7HNjNSqqV2H",
+"card_14TLyd2eZvKYloc2C9PXnfFmi", list(exp_year="04"))
 }
 
+}

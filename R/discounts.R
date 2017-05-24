@@ -15,8 +15,10 @@
 #'
 #' @export
 #'
-stripe_delete_customer_discount <- function(api_key, customer_id) {
+stripe_delete_customer_discount <- function(customer_id,
+                                            api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/customers/", customer_id, "/discount")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .delete(api_key, link)
 }
 
@@ -35,8 +37,11 @@ stripe_delete_customer_discount <- function(api_key, customer_id) {
 #'
 #' @export
 #'
-stripe_delete_subscription_discount <- function(api_key, customer_id, subscription_id) {
+stripe_delete_subscription_discount <- function(customer_id,
+                                                subscription_id,
+                                                api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/customers/", customer_id,
                    "/subscriptions/", subscription_id, "/discount")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .delete(api_key, link)
 }

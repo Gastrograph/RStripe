@@ -27,12 +27,18 @@
 #'
 #' @export
 #'
-stripe_create_transfer <- function(api_key, args) {
-    args <- .metadata(args)
-    link <- paste0("https://api.stripe.com/v1/transfers")
-    response <- POST(url = link, config=add_headers(Authorization=paste0("Bearer  ", api_key)),
-                     body=args, encode="form")
-    content(response)
+stripe_create_transfer <- function(args, api_key = NULL) {
+  args <- .metadata(args)
+  link <- paste0("https://api.stripe.com/v1/transfers")
+  api_key = check_stripe_secret_key(api_key = api_key)
+  response <-
+    POST(
+      url = link,
+      config = add_headers(Authorization = paste0("Bearer  ", api_key)),
+      body = args,
+      encode = "form"
+    )
+  content(response)
 }
 
 #' Retrieve a transfer
@@ -47,12 +53,17 @@ stripe_create_transfer <- function(api_key, args) {
 #'
 #' @export
 #'
-stripe_retrieve_transfer <- function(api_key, transfer_id) {
-    response <- getURL(paste0("https://api.stripe.com/v1/transfers/", transfer_id),
-                       userpwd=paste0(api_key, ":"))
+stripe_retrieve_transfer <-
+  function(transfer_id, api_key = NULL) {
+    api_key = check_stripe_secret_key(api_key = api_key)
+    response <-
+      getURL(
+        paste0("https://api.stripe.com/v1/transfers/", transfer_id),
+        userpwd = paste0(api_key, ":")
+      )
     df <- fromJSON(response)
     return(df)
-}
+  }
 
 #' Update a Transfer
 #'
@@ -62,7 +73,7 @@ stripe_retrieve_transfer <- function(api_key, transfer_id) {
 #'
 #' @param transfer_id The id of the transfer you want to update
 #'
-#' @param args A list can contain 
+#' @param args A list can contain
 #' \describe{
 #'    \item{metadata}{\emph{optional} A list of metadata to include}
 #'    \item{description}{\emph{optional} A string to describe the transfer}
@@ -72,17 +83,25 @@ stripe_retrieve_transfer <- function(api_key, transfer_id) {
 #'
 #' @export
 #'
-stripe_update_transfer <- function(api_key, transfer_id, args) {
+stripe_update_transfer <-
+  function(transfer_id, args, api_key = NULL) {
     args <- .metadata(args)
-    link <- paste0("https://api.stripe.com/v1/transfers/", transfer_id)
-    response <- POST(url = link, config=add_headers(Authorization=paste0("Bearer  ", api_key)),
-                     body=args, encode="form")
+    link <-
+      paste0("https://api.stripe.com/v1/transfers/", transfer_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
+    response <-
+      POST(
+        url = link,
+        config = add_headers(Authorization = paste0("Bearer  ", api_key)),
+        body = args,
+        encode = "form"
+      )
     content(response)
-}
+  }
 
 #' Cancel a transfer on Stripe.
 #'
-#' This will cancel a transfer that is scheduled.  
+#' This will cancel a transfer that is scheduled.
 #'
 #' @param api_key Your Stripe API Key
 #'
@@ -92,11 +111,17 @@ stripe_update_transfer <- function(api_key, transfer_id, args) {
 #'
 #' @export
 #'
-stripe_cancel_transfer <- function(api_key, transfer_id) {
-    link <- paste0("https://api.stripe.com/v1/transfers/", transfer_id, "/cancel")
-    response <- POST(url = link, config=add_headers(Authorization=paste0("Bearer  ", api_key)))
+stripe_cancel_transfer <-
+  function(transfer_id, api_key = NULL) {
+    link <-
+      paste0("https://api.stripe.com/v1/transfers/",
+             transfer_id,
+             "/cancel")
+    api_key = check_stripe_secret_key(api_key = api_key)
+    response <-
+      POST(url = link, config = add_headers(Authorization = paste0("Bearer  ", api_key)))
     content(response)
-}
+  }
 
 #' List Transfers.
 #'
@@ -104,7 +129,7 @@ stripe_cancel_transfer <- function(api_key, transfer_id) {
 #'
 #' @param api_key Your Stripe API Key
 #'
-#' @param args an optional list that can contain: 
+#' @param args an optional list that can contain:
 #' \describe{
 #'    \item{ending_before}{\emph{optional:} An object id which will show objects before}
 #'    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
@@ -118,10 +143,14 @@ stripe_cancel_transfer <- function(api_key, transfer_id) {
 #'
 #' @export
 #'
-stripe_list_transfers <- function(api_key, args=NULL) {
+stripe_list_transfers <-
+  function(args = NULL,
+           api_key = NULL) {
     args <- .convert_to_url(args)
-    response <- getURL(paste0("https://api.stripe.com/v1/transfers", args),
-                       userpwd=paste0(api_key, ":"))
+    api_key = check_stripe_secret_key(api_key = api_key)
+    response <-
+      getURL(paste0("https://api.stripe.com/v1/transfers", args),
+             userpwd = paste0(api_key, ":"))
     df <- fromJSON(response)
     return(df)
-}
+  }

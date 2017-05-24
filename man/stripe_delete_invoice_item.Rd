@@ -4,12 +4,12 @@
 \alias{stripe_delete_invoice_item}
 \title{Delete an Invoice Item.}
 \usage{
-stripe_delete_invoice_item(api_key, item_id)
+stripe_delete_invoice_item(item_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{item_id}{The invoice item id you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame without errors if successful.
@@ -17,4 +17,3 @@ A data frame without errors if successful.
 \description{
 Remove an invoice item from an invoice.
 }
-

@@ -4,11 +4,9 @@
 \alias{stripe_create_card_token}
 \title{Create a Card Token}
 \usage{
-stripe_create_card_token(api_key, args)
+stripe_create_card_token(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{A list which must contain card information including
 \describe{
    \item{number}{\strong{required}}
@@ -24,17 +22,23 @@ stripe_create_card_token(api_key, args)
    \item{name}{\emph{optional}}
    \item{customer}{\emph{optional} Customer to attach token to.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new card token info if successful.
 }
 \description{
-Create a card token to be used by other functions.  You can use this to create a charge,
+Create a card token to be used by other functions.  You can use this
+to create a charge,
 or to attach to a customer.
 }
 \examples{
-\dontrun{stripe_create_card_token("sk_test_BQokikJOvBiI2HlWgH4olfQ2",
-list(card=list(number="4242424242424242", exp_month="03", exp_year="2018")))}
-
+\dontrun{
+stripe_create_card_token(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(card=list(number="4242424242424242", exp_month="03",
+exp_year="2018")))
 }
 
+}

@@ -3,3 +3,5 @@
 tests/*
 .git/*
 .gitignore
+^.*\.Rproj$
+^\.Rproj\.user$

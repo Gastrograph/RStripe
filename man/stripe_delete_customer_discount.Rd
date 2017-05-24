@@ -4,13 +4,13 @@
 \alias{stripe_delete_customer_discount}
 \title{Delete a customer discount.}
 \usage{
-stripe_delete_customer_discount(api_key, customer_id)
+stripe_delete_customer_discount(customer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The identifier of the customer who
 has the discount to be deleted.}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns a data frame deleted true if if succeeded.
@@ -18,4 +18,3 @@ Returns a data frame deleted true if if succeeded.
 \description{
 Delete a discout from a customer.
 }
-

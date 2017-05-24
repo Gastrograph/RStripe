@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_customer}
 \title{Retrieve a Customer.}
 \usage{
-stripe_retrieve_customer(api_key, customer_id)
+stripe_retrieve_customer(customer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id of the customer you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the Customer info if successful.
@@ -17,4 +17,3 @@ A data frame with the Customer info if successful.
 \description{
 Retrieve the information about a specific customer using their id.
 }
-
