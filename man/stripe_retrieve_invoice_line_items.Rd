@@ -4,19 +4,19 @@
 \alias{stripe_retrieve_invoice_line_items}
 \title{Retrieve Invoice Items.}
 \usage{
-stripe_retrieve_invoice_line_items(api_key, invoice_id, args = NULL)
+stripe_retrieve_invoice_line_items(invoice_id, args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{invoice_id}{The invoice id with the items you want to retrieve}
 
-\item{args}{An optional list that can include 
+\item{args}{An optional list that can include
 \describe{
    \item{ending_before}{\emph{optional:} An object id which will show objects before}
    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
    \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the invoice items if successful.
@@ -24,4 +24,3 @@ A data frame with the invoice items if successful.
 \description{
 Retreive all the items on an invoice.
 }
-

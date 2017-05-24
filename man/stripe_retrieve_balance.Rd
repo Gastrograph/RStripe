@@ -4,7 +4,7 @@
 \alias{stripe_retrieve_balance}
 \title{Retrieve Stripe Account Balance.}
 \usage{
-stripe_retrieve_balance(api_key)
+stripe_retrieve_balance(api_key = NULL)
 }
 \arguments{
 \item{api_key}{Your Stripe API Key}
@@ -15,4 +15,3 @@ A data frame with your account balance
 \description{
 Retrieve the balance of your stripe account.
 }
-

@@ -4,12 +4,10 @@
 \alias{stripe_create_invoice_item}
 \title{Create an Invoice Item.}
 \usage{
-stripe_create_invoice_item(api_key, args)
+stripe_create_invoice_item(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
-\item{args}{A list which must contain 
+\item{args}{A list which must contain
 \describe{
    \item{amount}{\strong{required} In cents how much for item.}
    \item{currency}{\strong{required} 3-letter ISO code for currency.}
@@ -18,12 +16,13 @@ stripe_create_invoice_item(api_key, args)
    \item{invoice}{\emph{optional} Add to this invoice or leave blank for next invoice.}
    \item{subscription}{\emph{optional} Add to a specific subscriptions invoice.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new invoice item if successful.
 }
 \description{
-Create a new invoice item with amount and attach it to a subscription or invoice. 
+Create a new invoice item with amount and attach it to a subscription or invoice.
 If you leave invoice blank it will be added to the next upcoming invoice.
 }
-

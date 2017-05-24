@@ -4,19 +4,22 @@
 \alias{stripe_list_cards}
 \title{List credit card on customers.}
 \usage{
-stripe_list_cards(api_key, customer_id, args = NULL)
+stripe_list_cards(customer_id, args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id for the customer you want to list the cards}
 
 \item{args}{an optional list that can contain
 \describe{
-   \item{ending_before}{\emph{optional:} An object id which will show objects before}
-   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
-   \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
+   \item{ending_before}{\emph{optional:} An object id which will show
+   objects before}
+   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.
+    Default is 10}
+   \item{starting_after}{\emph{optional:} An object id which will show
+   objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with card information
@@ -24,4 +27,3 @@ A data frame with card information
 \description{
 List all the credit cards linked to a customer.
 }
-

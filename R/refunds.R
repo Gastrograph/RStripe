@@ -10,23 +10,33 @@
 #'
 #' @param charge_id The id of the charge to refund.
 #'
-#' @param args A list can contain \strong{amount}, 
+#' @param args A list can contain \strong{amount},
 #' \describe{
-#'    \item{amount}{\emph{required} An amount in cents to refund up to remaining charge.}
-#'    \item{refund_application_fee}{\emph{required} true/false if fee should be refunded.
-#'                                  If true, proportional amount of refund is refunded.}
+#'    \item{amount}{\emph{required} An amount in cents to refund up to remaining
+#'    charge.}
+#'    \item{refund_application_fee}{\emph{required} true/false if fee should
+#'    be refunded.
+#'                                  If true, proportional amount of refund
+#'                                  is refunded.}
 #'    \item{metadata}{\emph{required} Any metadata to include on the refund.}
 #' }
 #'
 #' @return A data frame with the new refund info if successful.
-#' 
+#'
 #' @export
 #'
-stripe_create_refund <- function(api_key, charge_id, args=NULL) {
+stripe_create_refund <-
+  function(charge_id,
+           args = NULL,
+           api_key = NULL) {
     args <- .metadata(args)
-    link <- paste0("https://api.stripe.com/v1/charges/",charge_id, "/refunds")
+    link <-
+      paste0("https://api.stripe.com/v1/charges/",
+             charge_id,
+             "/refunds")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
-}
+  }
 
 #' Retrieve a refund.
 #'
@@ -42,11 +52,15 @@ stripe_create_refund <- function(api_key, charge_id, args=NULL) {
 #'
 #' @export
 #'
-stripe_retrieve_refund <- function(api_key, charge_id, refund_id) {
+stripe_retrieve_refund <-
+  function(charge_id, refund_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/charges/",
-                              charge_id, "/refunds/", refund_id)
+                   charge_id,
+                   "/refunds/",
+                   refund_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
-}
+  }
 
 #' Update a Refund
 #'
@@ -60,23 +74,29 @@ stripe_retrieve_refund <- function(api_key, charge_id, refund_id) {
 #'
 #' @param args A list can contain:
 #' \describe{
-#'    \item{metadata}{\emph{optional} Any metadata in a list to change for refund.}
+#'    \item{metadata}{\emph{optional} Any metadata in a list to change
+#'    for refund.}
 #' }
 #'
 #' @return A data frame with the updated refund info if successful.
 #'
 #' @export
 #'
-stripe_update_refund <- function(api_key, charge_id, refund_id, args) {
+stripe_update_refund <-
+  function(charge_id, refund_id, args, api_key = NULL) {
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/charges/",
-                   charge_id, "/refunds/", refund_id)
+                   charge_id,
+                   "/refunds/",
+                   refund_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
-}
+  }
 
 #' List Refunds
 #'
-#' List all the refunds that a charge has.  You can have multiple refunds per charge until the 
+#' List all the refunds that a charge has.  You can have multiple
+#' refunds per charge until the
 #' full amount is reached.
 #'
 #' @param api_key Your Stripe API Key
@@ -85,18 +105,27 @@ stripe_update_refund <- function(api_key, charge_id, refund_id, args) {
 #'
 #' @param args an optional list that can contain:
 #' \describe{
-#'    \item{ending_before}{\emph{optional:} An object id which will show objects before}
-#'    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
-#'    \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
+#'    \item{ending_before}{\emph{optional:} An object id which will show
+#'    objects before}
+#'    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.
+#'      Default is 10}
+#'    \item{starting_after}{\emph{optional:} An object id which will show
+#'    objects starting here}
 #' }
 #'
 #' @return A data frame with refunds information
 #'
 #' @export
 #'
-stripe_list_refunds <- function(api_key, charge_id, args = NULL) {
+stripe_list_refunds <-
+  function(charge_id,
+           args = NULL,
+           api_key = NULL) {
     args <- .convert_to_url(args)
-    link <-paste0("https://api.stripe.com/v1/charges/", charge_id, "/refunds", args)
+    link <- paste0("https://api.stripe.com/v1/charges/",
+                   charge_id,
+                   "/refunds",
+                   args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
-}
-
+  }

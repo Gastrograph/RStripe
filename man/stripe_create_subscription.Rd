@@ -4,25 +4,29 @@
 \alias{stripe_create_subscription}
 \title{Create a Subscription}
 \usage{
-stripe_create_subscription(api_key, customer_id, args)
+stripe_create_subscription(customer_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The customer id you want to add a subscription to.}
 
 \item{args}{A list which includes:
 \describe{
    \item{plan}{\strong{required} The plan id}
    \item{coupon}{\emph{optional} A coupon to apply to this subscription.}
-   \item{trial_end}{\emph{optional} When the trial ends. Unix timestamp to override plan. 
+   \item{trial_end}{\emph{optional} When the trial ends. Unix timestamp
+   to override plan.
                     You can use \strong{now} to make it end now.}
-   \item{card}{\emph{optional} A token or card dictionary to use instead of default. 
+   \item{card}{\emph{optional} A token or card dictionary to use instead
+   of default.
                \strong{required} if customer has no card.}
    \item{quantity}{\emph{optional} Quantity to place in subscription.}
-   \item{application_fee_percent}{\emph{optional} A decimal 1 to 100 for percentage of amount.}
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+   \item{application_fee_percent}{\emph{optional} A decimal 1 to 100 for
+   percentage of amount.}
+   \item{metadata}{\emph{optional} A list which can contain anything to
+   further describe.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new subscription info if successful.
@@ -30,4 +34,3 @@ A data frame with the new subscription info if successful.
 \description{
 Create a new subscription for a customer and add it to them.
 }
-

@@ -14,8 +14,9 @@
 #'
 #' @export
 #'
-stripe_retrieve_event <- function(api_key, event_id) {
+stripe_retrieve_event <- function(event_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/events/", event_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -38,8 +39,9 @@ stripe_retrieve_event <- function(api_key, event_id) {
 #' all the eventsif valid.
 #' @export
 #'
-stripe_list_events <- function(api_key, args=NULL) {
+stripe_list_events <- function(args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/events", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }

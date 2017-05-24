@@ -4,19 +4,20 @@
 \alias{stripe_update_refund}
 \title{Update a Refund}
 \usage{
-stripe_update_refund(api_key, charge_id, refund_id, args)
+stripe_update_refund(charge_id, refund_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The id of the charge with the refund.}
 
 \item{refund_id}{The id of the refund you want to update}
 
 \item{args}{A list can contain:
 \describe{
-   \item{metadata}{\emph{optional} Any metadata in a list to change for refund.}
+   \item{metadata}{\emph{optional} Any metadata in a list to change
+   for refund.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the updated refund info if successful.
@@ -24,4 +25,3 @@ A data frame with the updated refund info if successful.
 \description{
 Update a refund with any metadata you want to include about the refund.
 }
-

@@ -4,11 +4,9 @@
 \alias{stripe_update_charge}
 \title{Update a charge.}
 \usage{
-stripe_update_charge(api_key, charge_id, args)
+stripe_update_charge(charge_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The identifier of the charge to be updated}
 
 \item{args}{A list that can include:
@@ -16,6 +14,8 @@ stripe_update_charge(api_key, charge_id, args)
    \item{metadata}{\emph{optional} A list of metadata to include}
    \item{description}{\emph{optional} A string to describe it}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns a charge data frame if succeeded.
@@ -24,9 +24,11 @@ Returns a charge data frame if succeeded.
 Update the information about a charge.
 }
 \examples{
-\dontrun{stripe_update_charge("sk_test_BQokikJOvBiI2HlWgH4olfQ2", 
+\dontrun{
+stripe_update_charge(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
 "ch_14TLyd2eZvKYlo2CdryxwrF8", list(description="for the item",
-metadata=list(order_id="3453")))}
-
+metadata=list(order_id="3453")))
 }
 
+}

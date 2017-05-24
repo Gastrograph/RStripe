@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_charge}
 \title{Retrieve a charge.}
 \usage{
-stripe_retrieve_charge(api_key, charge_id)
+stripe_retrieve_charge(charge_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The identifier of the charge to be retrieved}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns a charge data frame if valid.
@@ -18,8 +18,10 @@ Returns a charge data frame if valid.
 Retrieve all the information about a specific charge.
 }
 \examples{
-\dontrun{stripe_retrieve_charge("sk_test_BQokikJOvBiI2HlWgH4olfQ2", 
-"ch_14TLyd2eZvKYlo2CdryxwrF8")}
-
+\dontrun{
+stripe_retrieve_charge(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+"ch_14TLyd2eZvKYlo2CdryxwrF8")
 }
 
+}

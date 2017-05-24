@@ -4,12 +4,10 @@
 \alias{stripe_create_invoice}
 \title{Create an Invoice.}
 \usage{
-stripe_create_invoice(api_key, args)
+stripe_create_invoice(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
-\item{args}{A list which must contain 
+\item{args}{A list which must contain
 \describe{
    \item{customer}{\strong{required} customer id for the invoice.}
    \item{description}{\emph{optional} description of invoice.}
@@ -18,6 +16,8 @@ stripe_create_invoice(api_key, args)
    \item{subscription}{\emph{optional} id of the subscription to invoice.}
    \item{statement_description}{\emph{optional} Goes on credit card statement of customer.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new invoice if successful.
@@ -25,4 +25,3 @@ A data frame with the new invoice if successful.
 \description{
 Create a new invoice for a customer.
 }
-

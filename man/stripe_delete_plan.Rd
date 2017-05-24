@@ -4,17 +4,17 @@
 \alias{stripe_delete_plan}
 \title{Delete a plan on Stripe.}
 \usage{
-stripe_delete_plan(api_key, plan_id)
+stripe_delete_plan(plan_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{plan_id}{The id for the plan you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with nothing if successful.
 }
 \description{
-Delete a plan in your system.  Only able to do this if you have no subscriptions on it.
+Delete a plan in your system.  Only able to do this if you have no
+subscriptions on it.
 }
-

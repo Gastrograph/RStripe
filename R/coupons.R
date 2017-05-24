@@ -8,35 +8,49 @@
 #'
 #' @param api_key Your Stripe API Key
 #'
-#' @param args An list  
+#' @param args An list
 #' \describe{
-#'    \item{duration}{\strong{required} Can be \emph{forever}, \emph{once}, \emph{repeating}}
+#'    \item{duration}{\strong{required} Can be \emph{forever}, \emph{once},
+#'     \emph{repeating}}
 #'    \item{id}{\strong{optional} An id to identify. e.g. \emph{FALL25OFF}}
-#'    \item{amount_off}{\strong{optional} required if \emph{percent_off} is not passed.  Integer.}
+#'    \item{amount_off}{\strong{optional} required if \emph{percent_off} is
+#'    not passed.  Integer.}
 #'    \item{currency}{\strong{optional} required if amount_off is passed.}
-#'    \item{duration_in_months}{\strong{optional} required if duration is repeating.}
+#'    \item{duration_in_months}{\strong{optional} required if duration is
+#'    repeating.}
 #'    \item{max_redemptions}{\strong{optional} total amount of times to be used.}
-#'    \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+#'    \item{metadata}{\emph{optional} A list which can contain anything to
+#'    further describe.}
 #'    \item{percent_off}{\strong{optional} required if amount_off not passed.}
 #'    \item{redeem_by}{\strong{optional} unix timestamp that it ends.}
 #' }
 #'
-#' @examples \dontrun{stripe_create_coupon("sk_test_BQokikJOvBiI2HlWgH4olfQ2", 
-#' list(amount_off=200, duration='forever'))}
+#' @examples \dontrun{
+#' stripe_create_coupon(
+#' api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+#' list(amount_off=200, duration='forever'))
+#' }
 #'
-#' @examples \dontrun{stripe_create_coupon("sk_test_BQokikJOvBiI2HlWgH4olfQ2", 
-#' list(percent_off=25, duration='once'))}
+#' @examples \dontrun{
+#' stripe_create_coupon(
+#' api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+#' list(percent_off=25, duration='once'))
+#' }
 #'
-#' @examples \dontrun{stripe_create_coupon("sk_test_BQokikJOvBiI2HlWgH4olfQ2", 
-#' list(percent_off=25, duration='repeating', duration_in_months=3))}
+#' @examples \dontrun{
+#' stripe_create_coupon(
+#' api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+#' list(percent_off=25, duration='repeating', duration_in_months=3))
+#' }
 #'
 #' @return A data frame with the coupon information
 #'
 #' @export
 #'
-stripe_create_coupon <- function(api_key, args) {
+stripe_create_coupon <- function(args, api_key = NULL) {
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/coupons")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -52,8 +66,9 @@ stripe_create_coupon <- function(api_key, args) {
 #'
 #' @export
 #'
-stripe_retrieve_coupon <- function(api_key, coupon_id) {
+stripe_retrieve_coupon <- function(coupon_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/coupons/", coupon_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -68,16 +83,18 @@ stripe_retrieve_coupon <- function(api_key, coupon_id) {
 #' @param args An list which can contain:
 #' \describe{
 #'    \item{description}{\emph{optional} The description of the transfer.}
-#'    \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+#'    \item{metadata}{\emph{optional} A list which can contain anything to
+#'    further describe.}
 #' }
 #'
 #' @return A data frame with the new coupon information if succeeded.
 #'
 #' @export
 #'
-stripe_update_coupon <- function(api_key, coupon_id, args) {
+stripe_update_coupon <- function(coupon_id, args, api_key = NULL) {
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/coupons/", coupon_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -93,8 +110,9 @@ stripe_update_coupon <- function(api_key, coupon_id, args) {
 #'
 #' @export
 #'
-stripe_delete_coupon <- function(api_key, coupon_id) {
+stripe_delete_coupon <- function(coupon_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/coupons/", coupon_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .delete(api_key, link)
 }
 
@@ -106,20 +124,21 @@ stripe_delete_coupon <- function(api_key, coupon_id) {
 #'
 #' @param args An optional list which can contain
 #' \describe{
-#'    \item{ending_before}{\emph{optional:} An object id which will show objects before}
-#'    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
-#'    \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
+#'    \item{ending_before}{\emph{optional:} An object id which will show
+#'    objects before}
+#'    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.
+#'    Default is 10}
+#'    \item{starting_after}{\emph{optional:} An object id which will show
+#'    objects starting here}
 #' }
-#'
-#' @examples \dontrun{stripe_list_application_fee_refunds("sk_test_BQokikJOvBiI2HlWgH4olfQ2", "fee_4cbC9iLv8PdUnk",
-#' list(limit=3))} #returns 3 refunds
 #'
 #' @return A data frame with all the coupons.
 #'
 #' @export
 #'
-stripe_list_coupons <- function(api_key, args=NULL) {
+stripe_list_coupons <- function(args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/coupons", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }

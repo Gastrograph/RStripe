@@ -4,16 +4,17 @@
 \alias{stripe_retrieve_application_fee_refund}
 \title{Retrieve an existing refund for an Application Fee.}
 \usage{
-stripe_retrieve_application_fee_refund(api_key, application_fee_id, refund_id)
+stripe_retrieve_application_fee_refund(application_fee_id, refund_id,
+  api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{application_fee_id}{The id for the Application Fee
 you want to refund}
 
-\item{refund_id}{The id for the Refund 
+\item{refund_id}{The id for the Refund
 you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with refund information
@@ -21,4 +22,3 @@ A data frame with refund information
 \description{
 Retrieve the information of a refund.
 }
-

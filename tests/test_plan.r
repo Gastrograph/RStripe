@@ -15,33 +15,56 @@ subscription_id <- "sub_4caNZqnNC0jO4n"
 now <- as.numeric(Sys.time())
 
 test_delete <- function(api_key) {
-    res <-stripe_create_plan(api_key, args=list(id=paste(now), name=paste(now),
-                                               amount=200, currency="usd", interval="year"))
-    plan_id <- res$id
-    stripe_delete_plan(api_key, plan_id)
+  res <- stripe_create_plan(
+    api_key = api_key,
+    args = list(
+      id = paste(now),
+      name = paste(now),
+      amount = 200,
+      currency = "usd",
+      interval = "year"
+    )
+  )
+  plan_id <- res$id
+  stripe_delete_plan(api_key = api_key, plan_id)
 }
 
 test_that("create plan works", {
-          expect_that(stripe_create_plan(api_key, args=list(id=paste(now), name=paste(now), amount=200, currency="usd",
-                                                           interval="year"))$object,
-                      matches("plan"))
+  expect_that(stripe_create_plan(
+    api_key = api_key,
+    args = list(
+      id = paste(now),
+      name = paste(now),
+      amount = 200,
+      currency = "usd",
+      interval = "year"
+    )
+  )$object,
+  matches("plan"))
 })
 
 test_that("retrieve plan works", {
-          expect_that(stripe_retrieve_plan(api_key, plan_id)$object,
-                      matches("plan"))
+  expect_that(stripe_retrieve_plan(api_key = api_key, plan_id)$object,
+              matches("plan"))
 })
 test_that("update plan works", {
-          expect_that(stripe_update_subscription(api_key, customer_with_card, subscription_id,
-                                                 list(metadata=list(order_id=paste(now))))$metadata$order_id,
-                      matches(paste(now)))
+  expect_that(
+    stripe_update_subscription(
+      api_key = api_key,
+      customer_with_card,
+      subscription_id,
+      list(metadata = list(order_id =
+                             paste(now)))
+    )$metadata$order_id,
+    matches(paste(now))
+  )
 })
 test_that("delete plan works", {
-          expect_that(test_delete(api_key)$object,
-                      equals(NULL))
+  expect_that(test_delete(api_key = api_key)$object,
+              equals(NULL))
 })
 
 test_that("list plan works", {
-          expect_that(stripe_list_plans(api_key)$data$object,
-                      matches("plan"))
+  expect_that(stripe_list_plans(api_key = api_key)$data$object,
+              matches("plan"))
 })

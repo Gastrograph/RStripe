@@ -4,18 +4,18 @@
 \alias{stripe_list_recipients}
 \title{List all current recipients.}
 \usage{
-stripe_list_recipients(api_key, args = NULL)
+stripe_list_recipients(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
-\item{args}{an optional list that can contain: 
+\item{args}{an optional list that can contain:
 \describe{
    \item{verified}{\emph{optional:} Show only verified recipients.}
    \item{ending_before}{\emph{optional:} An object id which will show objects before}
    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
    \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with recipient's information
@@ -23,4 +23,3 @@ A data frame with recipient's information
 \description{
 List all the current recipients in your account.
 }
-

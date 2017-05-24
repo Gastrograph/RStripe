@@ -4,12 +4,12 @@
 \alias{stripe_close_dispute}
 \title{Close a dispute.}
 \usage{
-stripe_close_dispute(api_key, charge_id)
+stripe_close_dispute(charge_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The identifier of the charge with the dispute.}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns a dispute data frame if closed.
@@ -17,4 +17,3 @@ Returns a dispute data frame if closed.
 \description{
 Close a dispute which you don't have evidence to.
 }
-

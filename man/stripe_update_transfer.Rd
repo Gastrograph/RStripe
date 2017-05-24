@@ -4,18 +4,18 @@
 \alias{stripe_update_transfer}
 \title{Update a Transfer}
 \usage{
-stripe_update_transfer(api_key, transfer_id, args)
+stripe_update_transfer(transfer_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{transfer_id}{The id of the transfer you want to update}
 
-\item{args}{A list can contain 
+\item{args}{A list can contain
 \describe{
    \item{metadata}{\emph{optional} A list of metadata to include}
    \item{description}{\emph{optional} A string to describe the transfer}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the updated transfer info if successful.
@@ -23,4 +23,3 @@ A data frame with the updated transfer info if successful.
 \description{
 You can update a transfer that is scheduled or has been accepted by changing description.
 }
-

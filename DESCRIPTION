@@ -1,6 +1,6 @@
 Package: RStripe
 Title: A Convenience Interface for the Stripe Payment API
-Version: 0.1
+Version: 0.2
 Author: Evan Farrell <evandev@gastrograph.com>
 Maintainer: Evan Farrell <evandev@gastrograph.com>
 Description: A convenience interface for communicating with the Stripe payment processor to accept payments online. See <https://stripe.com> for more information.
@@ -14,4 +14,4 @@ Imports:
     httr
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

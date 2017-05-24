@@ -4,22 +4,25 @@
 \alias{stripe_list_plans}
 \title{List Plans.}
 \usage{
-stripe_list_plans(api_key, args = NULL)
+stripe_list_plans(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{an optional list that can contain
 \describe{
-   \item{ending_before}{\emph{optional:} An object id which will show objects before}
-   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
-   \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
+   \item{ending_before}{\emph{optional:} An object id which will show
+   objects before}
+   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.
+    Default is 10}
+   \item{starting_after}{\emph{optional:} An object id which will show
+   objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with plan information
 }
 \description{
-List all the plans in your system. It defaults to showing 10 unless you change the limit.
+List all the plans in your system. It defaults to showing 10 unless
+you change the limit.
 }
-

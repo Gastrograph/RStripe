@@ -4,16 +4,17 @@
 \alias{stripe_create_card}
 \title{Add a credit card to Stripe.}
 \usage{
-stripe_create_card(api_key, customer_id, args)
+stripe_create_card(customer_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id for the customer you want the credit card
 added to.}
 
 \item{args}{A required list of either a token,
-or a card dictionary. /href{https://stripe.com/docs/api#create_card}{more info here}}
+or a card dictionary.
+\href{https://stripe.com/docs/api#create_card}{more info here}}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with card information
@@ -22,11 +23,17 @@ A data frame with card information
 Add a new credit card to a customer. Set it as default.
 }
 \examples{
-\dontrun{stripe_create_card("sk_test_BQokikJOvBiI2HlWgH4olfQ2", "cus_4cb7HNjNSqqV2H", 
-list(card="tok_14SsjM2eZvKYlo2CCtdx2AvO")}
-
-\dontrun{stripe_create_card("sk_test_BQokikJOvBiI2HlWgH4olfQ2", "cus_4cb7HNjNSqqV2H", 
-list(card=list(number="4242424242424242", exp_month="03", exp_year="2018")))}
-
+\dontrun{
+stripe_create_card(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2", "cus_4cb7HNjNSqqV2H",
+list(source="tok_14SsjM2eZvKYlo2CCtdx2AvO"))
 }
 
+\dontrun{
+stripe_create_card(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2", "cus_4cb7HNjNSqqV2H",
+list(card=list(number="4242424242424242", exp_month="03",
+exp_year="2018")))
+}
+
+}

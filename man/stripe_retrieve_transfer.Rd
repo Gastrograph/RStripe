@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_transfer}
 \title{Retrieve a transfer}
 \usage{
-stripe_retrieve_transfer(api_key, transfer_id)
+stripe_retrieve_transfer(transfer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{transfer_id}{The id of the transfer you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the transfer info if successful.
@@ -17,4 +17,3 @@ A data frame with the transfer info if successful.
 \description{
 You can get all the information about a pending transfer or an accepted transfer.
 }
-

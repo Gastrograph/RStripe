@@ -15,8 +15,10 @@
 #'
 #' @export
 #'
-stripe_retrieve_application_fee <- function(api_key, application_fee_id) {
-    link <- paste0("https://api.stripe.com/v1/application_fees/", application_fee_id)
+stripe_retrieve_application_fee <- function(application_fee_id, api_key = NULL) {
+    link <- paste0("https://api.stripe.com/v1/application_fees/",
+                   application_fee_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -40,8 +42,9 @@ stripe_retrieve_application_fee <- function(api_key, application_fee_id) {
 #'
 #' @export
 #'
-stripe_list_application_fees <- function(api_key, args=NULL) {
+stripe_list_application_fees <- function(args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/application_fees", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }

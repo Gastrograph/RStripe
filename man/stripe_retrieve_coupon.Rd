@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_coupon}
 \title{Retrieve a coupon.}
 \usage{
-stripe_retrieve_coupon(api_key, coupon_id)
+stripe_retrieve_coupon(coupon_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{coupon_id}{The coupon you want to retrieve.}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the coupon information
@@ -17,4 +17,3 @@ A data frame with the coupon information
 \description{
 Retrieve the information about a coupon.
 }
-

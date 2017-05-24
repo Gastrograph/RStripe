@@ -4,24 +4,28 @@
 \alias{stripe_create_plan}
 \title{Create a Plan}
 \usage{
-stripe_create_plan(api_key, args)
+stripe_create_plan(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
-\item{args}{A list which must contain 
+\item{args}{A list which must contain
 \describe{
    \item{id}{The id of the plan to use.  e.g. 'gold'}
    \item{amount}{\strong{required} The amount in cents to charge.}
    \item{currency}{\strong{required} 3-letter ISO code for currency.}
-   \item{interval}{\strong{required} Specifies billing frequencey.  \strong{day}, \strong{week}
+   \item{interval}{\strong{required} Specifies billing frequencey.
+   \strong{day}, \strong{week}
                    \strong{month}, \strong{year}.}
    \item{name}{\strong{required} The name of plan.  Appears on invoice.}
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+   \item{metadata}{\emph{optional} A list which can contain anything to
+   further describe.}
    \item{trial_period_days}{\emph{optional} Specifies trial period in day.}
-   \item{interval_count}{\emph{optional} intervals in billing.  e.g. 3 if interval=month}
-   \item{statement_description}{\emph{optional} String to appear on invoice. Up to 15 characters}
+   \item{interval_count}{\emph{optional} intervals in billing.  e.g. 3 if
+   interval=month}
+   \item{statement_description}{\emph{optional} String to appear on invoice.
+   Up to 15 characters}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new plan info if successful.
@@ -30,8 +34,11 @@ A data frame with the new plan info if successful.
 Create a new plan on your stripe account.
 }
 \examples{
-\dontrun{stripe_create_plan("sk_test_BQokikJOvBiI2HlWgH4olfQ2",
-list(id="example-gold", amount=3000, currency="usd", interval="month"))}
-
+\dontrun{
+stripe_create_plan(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(id="example-gold", amount=3000,
+currency="usd", interval="month", name = "test"))
 }
 
+}

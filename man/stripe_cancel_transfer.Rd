@@ -4,12 +4,12 @@
 \alias{stripe_cancel_transfer}
 \title{Cancel a transfer on Stripe.}
 \usage{
-stripe_cancel_transfer(api_key, transfer_id)
+stripe_cancel_transfer(transfer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{transfer_id}{The id for the tranfer you want to cancel}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with nothing if successful.
@@ -17,4 +17,3 @@ A data frame with nothing if successful.
 \description{
 This will cancel a transfer that is scheduled.
 }
-

@@ -4,19 +4,21 @@
 \alias{stripe_update_plan}
 \title{Update a Plan}
 \usage{
-stripe_update_plan(api_key, plan_id, args)
+stripe_update_plan(plan_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{plan_id}{The id of the plan you want to update}
 
-\item{args}{A list can contain 
+\item{args}{A list can contain
 \describe{
    \item{name}{\emph{optional} The name of plan.  Appears on invoice.}
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
-   \item{statement_description}{\emph{optional} String to appear on invoice. Up to 15 characters}
+   \item{metadata}{\emph{optional} A list which can contain anything to
+   further describe.}
+   \item{statement_description}{\emph{optional} String to appear on invoice.
+    Up to 15 characters}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the updated plan info if successful.
@@ -24,4 +26,3 @@ A data frame with the updated plan info if successful.
 \description{
 Update the information about a particular plan on your stripe account.
 }
-

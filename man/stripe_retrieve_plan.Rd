@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_plan}
 \title{Retrieve a Plan}
 \usage{
-stripe_retrieve_plan(api_key, plan_id)
+stripe_retrieve_plan(plan_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{plan_id}{The id of the plan you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the plan info if successful.
@@ -17,4 +17,3 @@ A data frame with the plan info if successful.
 \description{
 Retrieve the information on a particular plan on your account.
 }
-

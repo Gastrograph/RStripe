@@ -8,8 +8,8 @@
 #'
 #' @param api_key Your Stripe API Key
 #'
-#' @param args A required list that must contain 
-#' \describe{ 
+#' @param args A required list that must contain
+#' \describe{
 #'    \item{name}{\strong{required} The legal name of recipient.}
 #'    \item{type}{\strong{required} put 'individual' or 'corporation'.}
 #'    \item{tax_id}{\emph{optional} The tax ID either 'SSN' for individual or 'EIN' for corporation}
@@ -24,8 +24,9 @@
 #'
 #' @export
 #'
-stripe_create_recipient <- function(api_key, args) {
+stripe_create_recipient <- function(args, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/recipients")
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -41,8 +42,9 @@ stripe_create_recipient <- function(api_key, args) {
 #'
 #' @export
 #'
-stripe_retrieve_recipient <- function(api_key, recipient_id) {
+stripe_retrieve_recipient <- function(recipient_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/recipients/", recipient_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -54,7 +56,7 @@ stripe_retrieve_recipient <- function(api_key, recipient_id) {
 #'
 #' @param recipient_id The id for the recipient you want to update.
 #'
-#' @param args A list that can contain 
+#' @param args A list that can contain
 #' \describe{
 #'    \item{name}{\emph{optional} The legal name of recipient.}
 #'    \item{tax_id}{\emph{optional} The tax ID either 'SSN' for individual or 'EIN' for corporation}
@@ -63,16 +65,17 @@ stripe_retrieve_recipient <- function(api_key, recipient_id) {
 #'    \item{email}{\emph{optional} Recipients email address.}
 #'    \item{description}{\emph{optional} Arbitrary string to describe.}
 #'    \item{metadata}{\emph{optional} key/value for storing information.}
-#'    \item{default_card}{\emph{optional} The default card to sue.} 
+#'    \item{default_card}{\emph{optional} The default card to sue.}
 #' }
 #'
 #' @return A data frame with recipient information
 #'
 #' @export
 #'
-stripe_update_recipient <- function(api_key, recipient_id, args) {
+stripe_update_recipient <- function(recipient_id, args, api_key = NULL) {
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/recipients/", recipient_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -88,8 +91,9 @@ stripe_update_recipient <- function(api_key, recipient_id, args) {
 #'
 #' @export
 #'
-stripe_delete_recipient <- function(api_key, recipient_id) {
+stripe_delete_recipient <- function(recipient_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/recipients/", recipient_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .delete(api_key, link)
 }
 
@@ -99,7 +103,7 @@ stripe_delete_recipient <- function(api_key, recipient_id) {
 #'
 #' @param api_key Your Stripe API Key
 #'
-#' @param args an optional list that can contain: 
+#' @param args an optional list that can contain:
 #' \describe{
 #'    \item{verified}{\emph{optional:} Show only verified recipients.}
 #'    \item{ending_before}{\emph{optional:} An object id which will show objects before}
@@ -111,8 +115,9 @@ stripe_delete_recipient <- function(api_key, recipient_id) {
 #'
 #' @export
 #'
-stripe_list_recipients <- function(api_key, args=NULL) {
+stripe_list_recipients <- function(args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/recipients", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }

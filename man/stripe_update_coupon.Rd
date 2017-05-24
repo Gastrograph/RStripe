@@ -4,18 +4,19 @@
 \alias{stripe_update_coupon}
 \title{Update a coupon.}
 \usage{
-stripe_update_coupon(api_key, coupon_id, args)
+stripe_update_coupon(coupon_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{coupon_id}{The coupon you want to update.}
 
 \item{args}{An list which can contain:
 \describe{
    \item{description}{\emph{optional} The description of the transfer.}
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+   \item{metadata}{\emph{optional} A list which can contain anything to
+   further describe.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new coupon information if succeeded.
@@ -23,4 +24,3 @@ A data frame with the new coupon information if succeeded.
 \description{
 Update the information about a coupon.
 }
-

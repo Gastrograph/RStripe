@@ -4,11 +4,9 @@
 \alias{stripe_create_customer}
 \title{Create a Customer.}
 \usage{
-stripe_create_customer(api_key, args = NULL)
+stripe_create_customer(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{an optional list which can contain
 \describe{
    \item{account_balance}{\emph{optional} In cents starting account balance. Positive means
@@ -19,9 +17,11 @@ stripe_create_customer(api_key, args = NULL)
    \item{coupon}{\emph{optional} A coupon code for a discount applied on all charges.}
    \item{email}{\emph{optional} Customer's email address.}
    \item{plan}{\emph{optional} A plan id to subscribe the customer to.}
-   \item{quantity}{\emph{optional} The amount of plans to subscribe them to.} 
+   \item{quantity}{\emph{optional} The amount of plans to subscribe them to.}
    \item{trial_end}{\emph{optional} Timestamp for end of trial period. Overrides plan trial.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new Customer info if successful.
@@ -29,4 +29,3 @@ A data frame with the new Customer info if successful.
 \description{
 Create a new customer and add information to them.
 }
-

@@ -4,12 +4,10 @@
 \alias{stripe_list_transfers}
 \title{List Transfers.}
 \usage{
-stripe_list_transfers(api_key, args = NULL)
+stripe_list_transfers(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
-\item{args}{an optional list that can contain: 
+\item{args}{an optional list that can contain:
 \describe{
    \item{ending_before}{\emph{optional:} An object id which will show objects before}
    \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
@@ -18,6 +16,8 @@ stripe_list_transfers(api_key, args = NULL)
    \item{status}{\emph{optional:} transfers with: \strong{pending},
                  \strong{paid}, \strong{failed}}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with transfers information
@@ -25,4 +25,3 @@ A data frame with transfers information
 \description{
 List all the Bank Accoun transfers for the account.
 }
-

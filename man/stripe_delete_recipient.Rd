@@ -4,12 +4,12 @@
 \alias{stripe_delete_recipient}
 \title{Delete a recipient on Stripe.}
 \usage{
-stripe_delete_recipient(api_key, recipient_id)
+stripe_delete_recipient(recipient_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{recipient_id}{The id for the recipient you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with recipient information
@@ -17,4 +17,3 @@ A data frame with recipient information
 \description{
 Remove a recipient from your stripe account.
 }
-

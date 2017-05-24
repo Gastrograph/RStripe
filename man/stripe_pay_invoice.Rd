@@ -4,12 +4,12 @@
 \alias{stripe_pay_invoice}
 \title{Pay an Invoice.}
 \usage{
-stripe_pay_invoice(api_key, invoice_id)
+stripe_pay_invoice(invoice_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{invoice_id}{The invoice id you want to pay}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the invoice if successful.
@@ -17,4 +17,3 @@ A data frame with the invoice if successful.
 \description{
 Pay the invoice right now with customer information.
 }
-

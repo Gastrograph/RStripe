@@ -4,25 +4,28 @@
 \alias{stripe_list_refunds}
 \title{List Refunds}
 \usage{
-stripe_list_refunds(api_key, charge_id, args = NULL)
+stripe_list_refunds(charge_id, args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The id of the charge with the refund.}
 
 \item{args}{an optional list that can contain:
 \describe{
-   \item{ending_before}{\emph{optional:} An object id which will show objects before}
-   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.  Default is 10}
-   \item{starting_after}{\emph{optional:} An object id which will show objects starting here}
+   \item{ending_before}{\emph{optional:} An object id which will show
+   objects before}
+   \item{limit}{\emph{optional:} A number 1 to 100 to limit the items.
+     Default is 10}
+   \item{starting_after}{\emph{optional:} An object id which will show
+   objects starting here}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with refunds information
 }
 \description{
-List all the refunds that a charge has.  You can have multiple refunds per charge until the 
+List all the refunds that a charge has.  You can have multiple
+refunds per charge until the
 full amount is reached.
 }
-

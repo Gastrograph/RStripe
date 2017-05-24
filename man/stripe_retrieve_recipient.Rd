@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_recipient}
 \title{Retrieve information on a recipient.}
 \usage{
-stripe_retrieve_recipient(api_key, recipient_id)
+stripe_retrieve_recipient(recipient_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{recipient_id}{The id for the recipient you want to retrieve.}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with recipient information
@@ -17,4 +17,3 @@ A data frame with recipient information
 \description{
 Retrieve all the information on a recipient.
 }
-

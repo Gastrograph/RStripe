@@ -4,13 +4,11 @@
 \alias{stripe_create_recipient}
 \title{Add a recipient to Stripe.}
 \usage{
-stripe_create_recipient(api_key, args)
+stripe_create_recipient(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
-\item{args}{A required list that must contain 
-\describe{ 
+\item{args}{A required list that must contain
+\describe{
    \item{name}{\strong{required} The legal name of recipient.}
    \item{type}{\strong{required} put 'individual' or 'corporation'.}
    \item{tax_id}{\emph{optional} The tax ID either 'SSN' for individual or 'EIN' for corporation}
@@ -20,6 +18,8 @@ stripe_create_recipient(api_key, args)
    \item{description}{\emph{optional} Arbitrary string to describe.}
    \item{metadata}{\emph{optional} key/value for storing information.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with new recipient information
@@ -27,4 +27,3 @@ A data frame with new recipient information
 \description{
 Add a new recipient to your account to schedule transfers and more.
 }
-

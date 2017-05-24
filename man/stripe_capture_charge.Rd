@@ -4,24 +4,25 @@
 \alias{stripe_capture_charge}
 \title{Capture a charge.}
 \usage{
-stripe_capture_charge(api_key, charge_id, args = NULL)
+stripe_capture_charge(charge_id, args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The identifier of the charge to be captured}
 
 \item{args}{an optional list that can include \strong{amount},
 \describe{
-   \item{application_fee}{\emph{optional} A fee to add on to a charge. Only Stripe Connect}
+   \item{application_fee}{\emph{optional} A fee to add on to a charge.
+   Only Stripe Connect}
    \item{receipt_email}{\emph{optional} The email to send receipt to.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns a charge data frame if the capture succeeded.
 }
 \description{
-As part of the two step charge workflow, capture a charge.  Read more about the workflow
+As part of the two step charge workflow, capture a charge.  Read more about
+the workflow
 on the stripe website.
 }
-

@@ -4,20 +4,23 @@
 \alias{stripe_create_refund}
 \title{Create a Refund}
 \usage{
-stripe_create_refund(api_key, charge_id, args = NULL)
+stripe_create_refund(charge_id, args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{charge_id}{The id of the charge to refund.}
 
-\item{args}{A list can contain \strong{amount}, 
+\item{args}{A list can contain \strong{amount},
 \describe{
-   \item{amount}{\emph{required} An amount in cents to refund up to remaining charge.}
-   \item{refund_application_fee}{\emph{required} true/false if fee should be refunded.
-                                 If true, proportional amount of refund is refunded.}
+   \item{amount}{\emph{required} An amount in cents to refund up to remaining
+   charge.}
+   \item{refund_application_fee}{\emph{required} true/false if fee should
+   be refunded.
+                                 If true, proportional amount of refund
+                                 is refunded.}
    \item{metadata}{\emph{required} Any metadata to include on the refund.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new refund info if successful.
@@ -25,4 +28,3 @@ A data frame with the new refund info if successful.
 \description{
 Create a new refund on a charge.
 }
-

@@ -4,12 +4,12 @@
 \alias{stripe_retrieve_invoice}
 \title{Retrieve an Invoice.}
 \usage{
-stripe_retrieve_invoice(api_key, invoice_id)
+stripe_retrieve_invoice(invoice_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{invoice_id}{The invoice id you want to retrieve}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the invoice if successful.
@@ -17,4 +17,3 @@ A data frame with the invoice if successful.
 \description{
 Retrieve all the information on a particular invoice.
 }
-

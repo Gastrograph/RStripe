@@ -18,7 +18,7 @@
 #'    \item{coupon}{\emph{optional} A coupon code for a discount applied on all charges.}
 #'    \item{email}{\emph{optional} Customer's email address.}
 #'    \item{plan}{\emph{optional} A plan id to subscribe the customer to.}
-#'    \item{quantity}{\emph{optional} The amount of plans to subscribe them to.} 
+#'    \item{quantity}{\emph{optional} The amount of plans to subscribe them to.}
 #'    \item{trial_end}{\emph{optional} Timestamp for end of trial period. Overrides plan trial.}
 #' }
 #'
@@ -26,10 +26,11 @@
 #'
 #' @export
 #'
-stripe_create_customer <- function(api_key, args=NULL) {
+stripe_create_customer <- function(args=NULL, api_key = NULL) {
     args <- .card(args)
     args <- .metadata(args)
     link <- "https://api.stripe.com/v1/customers"
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -45,8 +46,10 @@ stripe_create_customer <- function(api_key, args=NULL) {
 #'
 #' @export
 #'
-stripe_retrieve_customer <- function(api_key, customer_id) {
-    link <- paste0("https://api.stripe.com/v1/customers/",customer_id)
+stripe_retrieve_customer <- function(customer_id, api_key = NULL) {
+    link <- paste0("https://api.stripe.com/v1/customers/",
+                   customer_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }
 
@@ -74,10 +77,11 @@ stripe_retrieve_customer <- function(api_key, customer_id) {
 #'
 #' @export
 #'
-stripe_update_customer <- function(api_key, customer_id, args) {
+stripe_update_customer <- function(customer_id, args, api_key = NULL) {
     args <- .card(args)
     args <- .metadata(args)
     link <- paste0("https://api.stripe.com/v1/customers/", customer_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
 }
 
@@ -93,8 +97,9 @@ stripe_update_customer <- function(api_key, customer_id, args) {
 #'
 #' @export
 #'
-stripe_delete_customer <- function(api_key, customer_id) {
+stripe_delete_customer <- function(customer_id, api_key = NULL) {
     link <- paste0("https://api.stripe.com/v1/customers/",customer_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .delete(api_key, link)
 }
 
@@ -115,8 +120,9 @@ stripe_delete_customer <- function(api_key, customer_id) {
 #'
 #' @export
 #'
-stripe_list_customers <- function(api_key, args=NULL) {
+stripe_list_customers <- function(args=NULL, api_key = NULL) {
     args <- .convert_to_url(args)
     link <- paste0("https://api.stripe.com/v1/customers", args)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .get(api_key, link)
 }

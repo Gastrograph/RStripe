@@ -4,17 +4,20 @@
 \alias{stripe_create_account_token}
 \title{Create a Bank Account Token}
 \usage{
-stripe_create_account_token(api_key, args)
+stripe_create_account_token(args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{A list which must contain bank account information including
 \describe{
-   \item{country}{\strong{required} Country bank account is in.  Only 'US' supported.}
-   \item{routing_number}{\strong{required} routing number in string form.  Not wire number.}
-   \item{account_number}{\strong{required} Account number for account.  Must be checking.}
+   \item{country}{\strong{required} Country bank account is in.
+   Only 'US' supported.}
+   \item{routing_number}{\strong{required} routing number in string form.
+   Not wire number.}
+   \item{account_number}{\strong{required} Account number for account.
+   Must be checking.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the new bank account token info if successful.
@@ -23,8 +26,13 @@ A data frame with the new bank account token info if successful.
 Create a bank account token to schedule a transfer to a recipient.
 }
 \examples{
-\dontrun{stripe_create_account_token("sk_test_BQokikJOvBiI2HlWgH4olfQ2",
-list(card=list(country="US", routing_number="110000000", account_number="0000000014343")))}
-
+\dontrun{
+stripe_create_account_token(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2",
+list(country="US",
+routing_number="110000000",
+currency = "usd",
+account_number="000123456789"))
 }
 
+}

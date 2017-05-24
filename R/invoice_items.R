@@ -4,12 +4,12 @@
 
 #' Create an Invoice Item.
 #'
-#' Create a new invoice item with amount and attach it to a subscription or invoice. 
+#' Create a new invoice item with amount and attach it to a subscription or invoice.
 #' If you leave invoice blank it will be added to the next upcoming invoice.
 #'
 #' @param api_key Your Stripe API Key
 #'
-#' @param args A list which must contain 
+#' @param args A list which must contain
 #' \describe{
 #'    \item{amount}{\strong{required} In cents how much for item.}
 #'    \item{currency}{\strong{required} 3-letter ISO code for currency.}
@@ -23,10 +23,11 @@
 #'
 #' @export
 #'
-stripe_create_invoice_item <- function(api_key, args) {
-    args <- .metadata(args)
-    link <- paste0("https://api.stripe.com/v1/invoiceitems")
-    .post(api_key, link, args)
+stripe_create_invoice_item <- function(args, api_key = NULL) {
+  args <- .metadata(args)
+  link <- paste0("https://api.stripe.com/v1/invoiceitems")
+  api_key = check_stripe_secret_key(api_key = api_key)
+  .post(api_key, link, args)
 }
 
 #' Retrieve an Invoice Item.
@@ -41,9 +42,10 @@ stripe_create_invoice_item <- function(api_key, args) {
 #'
 #' @export
 #'
-stripe_retrieve_invoice_item <- function(api_key, item_id) {
-    link <- paste0("https://api.stripe.com/v1/invoiceitems/", item_id)
-    .get(api_key, link)
+stripe_retrieve_invoice_item <- function(item_id, api_key = NULL) {
+  link <- paste0("https://api.stripe.com/v1/invoiceitems/", item_id)
+  api_key = check_stripe_secret_key(api_key = api_key)
+  .get(api_key, link)
 }
 
 #' Update an Invoice Item.
@@ -54,7 +56,7 @@ stripe_retrieve_invoice_item <- function(api_key, item_id) {
 #'
 #' @param item_id The invoice item id you want to update
 #'
-#' @param args Can include 
+#' @param args Can include
 #' \describe{
 #'    \item{amount}{\emph{optional} Amount in cents for item.}
 #'    \item{description}{\emph{optional} A string to attach to item for easy tracking.}
@@ -65,11 +67,14 @@ stripe_retrieve_invoice_item <- function(api_key, item_id) {
 #'
 #' @export
 #'
-stripe_update_invoice_item <- function(api_key, item_id, args) {
+stripe_update_invoice_item <-
+  function(item_id, args, api_key = NULL) {
     args <- .metadata(args)
-    link <- paste0("https://api.stripe.com/v1/invoiceitems/", item_id)
+    link <-
+      paste0("https://api.stripe.com/v1/invoiceitems/", item_id)
+    api_key = check_stripe_secret_key(api_key = api_key)
     .post(api_key, link, args)
-}
+  }
 
 #' Delete an Invoice Item.
 #'
@@ -83,9 +88,10 @@ stripe_update_invoice_item <- function(api_key, item_id, args) {
 #'
 #' @export
 #'
-stripe_delete_invoice_item <- function(api_key, item_id) {
-    link <- paste0("https://api.stripe.com/v1/invoiceitems/", item_id)
-    .delete(api_key, link)
+stripe_delete_invoice_item <- function(item_id, api_key = NULL) {
+  link <- paste0("https://api.stripe.com/v1/invoiceitems/", item_id)
+  api_key = check_stripe_secret_key(api_key = api_key)
+  .delete(api_key, link)
 }
 
 #' List all Invoice Item.
@@ -105,8 +111,9 @@ stripe_delete_invoice_item <- function(api_key, item_id) {
 #' @return A data frame with the the invoice items if successful.
 #' @export
 #'
-stripe_list_invoice_items <- function(api_key, args=NULL) {
-    args <- .convert_to_url(args)
-    link <- paste0("https://api.stripe.com/v1/invoiceitems", args)
-    .get(api_key, link)
+stripe_list_invoice_items <- function(args = NULL, api_key = NULL) {
+  args <- .convert_to_url(args)
+  link <- paste0("https://api.stripe.com/v1/invoiceitems", args)
+  api_key = check_stripe_secret_key(api_key = api_key)
+  .get(api_key, link)
 }

@@ -4,22 +4,23 @@
 \alias{stripe_update_application_fee_refund}
 \title{Update a refund for an Application Fee.}
 \usage{
-stripe_update_application_fee_refund(api_key, application_fee_id, refund_id,
-  args)
+stripe_update_application_fee_refund(application_fee_id, refund_id, args,
+  api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{application_fee_id}{The id for the Application Fee
 you want to refund}
 
-\item{refund_id}{The id for the Refund 
+\item{refund_id}{The id for the Refund
 you want to update}
 
 \item{args}{An optional list which can contain:
 \describe{
-   \item{metadata}{\emph{optional} A list which can contain anything to further describe.}
+   \item{metadata}{\emph{optional} A list which can contain
+   anything to further describe.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with application fee refund object if succeeded
@@ -28,8 +29,8 @@ A data frame with application fee refund object if succeeded
 Update all the information of a refund of an application fee.
 }
 \examples{
-\dontrun{stripe_create_application_fee_refund("sk_test_BQokikJOvBiI2HlWgH4olfQ2", "fee_4cbC9iLv8PdUnk",
+\dontrun{stripe_create_application_fee_refund(
+api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2", "fee_4cbC9iLv8PdUnk",
 list(metadata=list(reason="Accidental charge")))}
 
 }
-

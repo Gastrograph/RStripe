@@ -4,14 +4,14 @@
 \alias{stripe_delete_card}
 \title{Delete a credit card on Stripe.}
 \usage{
-stripe_delete_card(api_key, customer_id, card_id)
+stripe_delete_card(customer_id, card_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id for the customer where the card is.}
 
 \item{card_id}{The id for the card you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with card information
@@ -19,4 +19,3 @@ A data frame with card information
 \description{
 Delete a credit card off a customer's account.
 }
-

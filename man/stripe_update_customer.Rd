@@ -4,11 +4,9 @@
 \alias{stripe_update_customer}
 \title{Update a Customer.}
 \usage{
-stripe_update_customer(api_key, customer_id, args)
+stripe_update_customer(customer_id, args, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id of the customer you want to update}
 
 \item{args}{an optional list which can contain:
@@ -22,6 +20,8 @@ stripe_update_customer(api_key, customer_id, args)
    \item{coupon}{\emph{optional} A coupon code for a discount applied on all charges.}
    \item{email}{\emph{optional} Customer's email address.}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with the updated Customer info if successful.
@@ -29,4 +29,3 @@ A data frame with the updated Customer info if successful.
 \description{
 Update the customer's information or add a new card to a customer.
 }
-

@@ -4,12 +4,12 @@
 \alias{stripe_delete_customer}
 \title{Delete a Customer.}
 \usage{
-stripe_delete_customer(api_key, customer_id)
+stripe_delete_customer(customer_id, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The id of the customer you want to delete}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame empty if successful.
@@ -17,4 +17,3 @@ A data frame empty if successful.
 \description{
 Remove a customer from your stripe account.
 }
-

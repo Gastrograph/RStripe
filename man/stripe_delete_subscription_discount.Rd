@@ -4,15 +4,16 @@
 \alias{stripe_delete_subscription_discount}
 \title{Delete a subscription discount.}
 \usage{
-stripe_delete_subscription_discount(api_key, customer_id, subscription_id)
+stripe_delete_subscription_discount(customer_id, subscription_id,
+  api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{customer_id}{The identifier of the customer who
 has the discount to be deleted.}
 
 \item{subscription_id}{The identifier of the subscription.}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 Returns a data frame deleted true if if succeeded.
@@ -20,4 +21,3 @@ Returns a data frame deleted true if if succeeded.
 \description{
 Delete a discount from a customer's subscription.
 }
-

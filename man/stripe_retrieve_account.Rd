@@ -4,7 +4,7 @@
 \alias{stripe_retrieve_account}
 \title{Your Stripe Account.}
 \usage{
-stripe_retrieve_account(api_key)
+stripe_retrieve_account(api_key = NULL)
 }
 \arguments{
 \item{api_key}{Your Stripe API key}
@@ -16,7 +16,8 @@ Your account information in a data frame.
 Retrieve your account.
 }
 \examples{
-\dontrun{stripe_retrieve_account("sk_test_2337VDxzNLS332zsso")}
-
+\dontrun{
+stripe_retrieve_account(api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2")
 }
 
+}

@@ -4,11 +4,9 @@
 \alias{stripe_balance_history}
 \title{Retrieve a Stripe Account Balance History.}
 \usage{
-stripe_balance_history(api_key, args = NULL)
+stripe_balance_history(args = NULL, api_key = NULL)
 }
 \arguments{
-\item{api_key}{Your Stripe API Key}
-
 \item{args}{optional list which can include
 \describe{
    \item{available_on}{\emph{optional:} Filter on date with unix timestamp.}
@@ -21,6 +19,8 @@ stripe_balance_history(api_key, args = NULL)
                'application_fee_refund', 'transfer', or 'transfer_failure'}
    \item{currency}{\emph{optional:} 3 letter ISO}
 }}
+
+\item{api_key}{Your Stripe API Key}
 }
 \value{
 A data frame with balance history information if succeeded.
@@ -28,4 +28,3 @@ A data frame with balance history information if succeeded.
 \description{
 Retrieve the history of your account balance.
 }
-
